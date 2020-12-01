@@ -6,7 +6,7 @@ OFF = 0
 vals = [ON, OFF]
 
 SIZE = 100
-FRAMES = 10
+FRAMES = 100000
 OUTPUT_FILE_PATH = 'game_of_life_frames.h5'
 DATASET_NAME = 'gol_frames'
 
