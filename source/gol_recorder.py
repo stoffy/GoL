@@ -1,13 +1,17 @@
 import numpy as np
 import h5py
+import os
 
 ON = 255
 OFF = 0
 vals = [ON, OFF]
 
 SIZE = 100
-FRAMES = 100000
-OUTPUT_FILE_PATH = 'game_of_life_frames.h5'
+FRAMES = 10
+
+OUTPUT_FILE_PATH = os.path.abspath(
+    __file__ + f'/../../data/game_of_life_{SIZE}-{FRAMES}.h5')
+
 DATASET_NAME = 'gol_frames'
 
 
@@ -40,7 +44,7 @@ def main():
         dst = f.create_dataset(DATASET_NAME, shape=(FRAMES, SIZE, SIZE),
                                dtype=np.uint8)
         for frame in range(FRAMES):
-            dst[frame] = grid
+            dst[frame] = grid/255
             grid = updateGrid(grid, SIZE)
     print(
         f'Saved at destination: {OUTPUT_FILE_PATH}. Dataset name: {DATASET_NAME}.')
